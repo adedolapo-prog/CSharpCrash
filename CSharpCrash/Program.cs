@@ -9,7 +9,8 @@ class Program
         char val = 'A';
         string name = "Johnny";
         int value1 = 5;
-        int value2 = 0;
+        int value2 = 10;
+        int value3 = 0;
 
         PrintToConsole($"Hello, {name}");
         VariablesAndDataTypes(age, interest);
@@ -17,6 +18,7 @@ class Program
         try
         {
             DivisionFunction(value1, value2);
+            DivisionFunction(value1, value3);
         } catch (DivideByZeroException ex)
         {
             Console.WriteLine(ex.Message + " Error dividing by zero");
@@ -36,6 +38,11 @@ class Program
 
     static void DivisionFunction(int num1, int num2)
     {
-        Console.WriteLine(num1 / num2);
+        if (num2 == 0)
+        {
+            throw new DivideByZeroException();
+        }
+
+        Console.WriteLine((double)num1 / num2);
     }
 }
